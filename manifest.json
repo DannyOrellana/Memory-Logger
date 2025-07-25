@@ -6,7 +6,7 @@
     "dependencies": [],
     "js": "index.js",
     "css": "style.css",
-    "author": "Your name",
+    "author": "Luna",
     "version": "1.0.0",
     "homePage": "https://github.com/DannyOrellana/Memory-Logger",
     "auto_update": true,
