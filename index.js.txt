@@ -1,0 +1,49 @@
+export default {
+  id: "memory-logger",
+  name: "Memory Logger",
+  description: "Automatically logs summaries to character memory WI entries.",
+
+  onEnable() {
+    console.log("[Memory Logger] enabled");
+  },
+
+  onDisable() {
+    console.log("[Memory Logger] disabled");
+  },
+
+  async onMessageProcessed({ sender, message }) {
+    // Only handle bot responses
+    if (sender !== "assistant") return;
+
+    const summary = generateSummary(message);
+
+    if (summary) {
+      await writeToMemory("Sydney Memory Log", summary);
+    }
+  },
+};
+
+// Helper: Find a line starting with 'event:' (case insensitive)
+function generateSummary(message) {
+  const lines = message.split("\n");
+  for (let line of lines) {
+    if (line.trim().toLowerCase().startsWith("event:")) {
+      return line.trim();
+    }
+  }
+  return null; // No summary found
+}
+
+// Helper: Append the summary to the Sydney Memory Log WI
+async function writeToMemory(entryTitle, content) {
+  try {
+    const response = await ST.worldInfo.appendToEntry({
+      title: entryTitle,
+      content: `\n${content}`,
+    });
+    console.log(`[Memory Logger] Logged to ${entryTitle}:`, content);
+    return response;
+  } catch (error) {
+    console.error(`[Memory Logger] Failed to write memory:`, error);
+  }
+}
