@@ -1,0 +1,16 @@
+{
+    "display_name": "Memory Logger",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "dependencies": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Luna",
+    "version": "1.0.0",
+    "homePage": "https://github.com/DannyOrellana/Memory-Logger",
+    "auto_update": true,
+    "i18n": {
+        "de-de": "i18n/de-de.json"
+    }
+}

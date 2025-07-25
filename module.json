@@ -1,0 +1,8 @@
+{
+  "id": "memory-logger",
+  "name": "Memory Logger",
+  "version": "1.0.0",
+  "author": "Luna",
+  "description": "Tracks and injects memory logs into WI entries using defined rules.",
+  "entry": "index.js"
+}
