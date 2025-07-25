@@ -57,3 +57,33 @@ export default {
     if (existing) existing.remove();
   }
 };
+
+plugin.onResponse = async function (responseText, context) {
+    if (!pluginStorage.memoryLogger || !pluginStorage.memoryLogger.rules) return;
+
+    for (let rule of pluginStorage.memoryLogger.rules) {
+        if (responseText.includes(rule.trigger)) {
+            const timestamp = new Date().toLocaleString();
+            const entryText = `\n[${timestamp}] ${rule.insertText}`;
+
+            await insertIntoWorldInfo(rule.targetEntry, rule.insertSection, entryText);
+        }
+    }
+};
+
+async function insertIntoWorldInfo(entryName, sectionMarker, newText) {
+    const entries = worldInfo.getEntries();
+
+    let entry = entries.find(e => e.entry === entryName);
+    if (!entry) return;
+
+    const markerIndex = entry.content.indexOf(sectionMarker);
+    if (markerIndex === -1) return;
+
+    const before = entry.content.substring(0, markerIndex + sectionMarker.length);
+    const after = entry.content.substring(markerIndex + sectionMarker.length);
+
+    entry.content = before + newText + after;
+
+    await worldInfo.updateEntry(entry);
+}
