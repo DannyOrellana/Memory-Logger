@@ -1,0 +1,58 @@
+/* Container for the entire extension UI */
+.memory-logger-extension {
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  color: #eee;
+}
+
+/* Section titles */
+.memory-logger-extension h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Labels for dropdowns and inputs */
+.memory-logger-extension label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+/* Dropdown menus */
+.memory-logger-extension select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 12px;
+  background-color: #1c1c1c;
+  color: #eee;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+/* Text input fields */
+.memory-logger-extension input[type="text"] {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 12px;
+  background-color: #1c1c1c;
+  color: #eee;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+/* Save/Submit Button */
+.memory-logger-extension button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.memory-logger-extension button:hover {
+  background-color: #45a049;
+}
